@@ -1,2 +1,3 @@
 # JavaGUI
-Lab 4/16/18
+GitHub/GUI Intro Lab
+4/16/18
