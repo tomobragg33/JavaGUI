@@ -1,6 +1,8 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -15,6 +17,9 @@ public class GUIDemo extends JFrame
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
+    private JButton colorButton;
+    private Color color;
+    private Random generator;
 
     /**
      * Set up the application.
@@ -32,7 +37,13 @@ public class GUIDemo extends JFrame
         add(panel);
         panel.add(biggerButton);
         panel.add(smallerButton);
-        setVisible(true);
+
+	//lab addition
+	colorButton = new JButton("Change Color");
+	colorButton.addActionListener(new ButtonHandler());
+	panel.add(colorButton);
+	generator = new Random();
+	setVisible(true);
     }
 
     /**
@@ -53,10 +64,15 @@ public class GUIDemo extends JFrame
             {
                 setSize(size.width + 10, size.height + 10);
             }
-            else
+            else if (e.getSource().equals(smallerButton))
             {
                 setSize(size.width - 10, size.height - 10);
             }
+	    else
+	    {
+		panel.setBackground(new Color(generator.nextFloat(), 
+				generator.nextFloat(), generator.nextFloat()));
+	    }
 
         }
     }
